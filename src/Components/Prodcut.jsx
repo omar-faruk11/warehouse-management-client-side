@@ -1,22 +1,28 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Prodcut = ({ product }) => {
-    const { name, picture, description, price, quantity, supplier } = product;
+    const { _id, name, picture, description, price, quantity, supplier } = product;
+    const navigate = useNavigate();
+
+    
     return (
         <div className='border'>
+            
             <img
+
                 className="object-cover w-full h-56 "
                 src={picture}
                 alt=""
             />
-
+            
             <div className="p-6">
                 <h5 className="text-xl">
                     {name}
                 </h5>
 
                 <p className="mt-2 text-sm text-gray-600">
-                    {description.slice(0, 250)}
+                    {description.slice(0, 200)}
                 </p>
                 <p className="mt-2 text-sm text-gray-700">
                     Price: ${price}
@@ -29,7 +35,7 @@ const Prodcut = ({ product }) => {
                 </p>
 
             </div>
-            <div className="py-3 w-full text-white bg-rose-500 focus:outline-none focus:ring" href="/download">
+            <div onClick={() => navigate(`/inventory/${_id}`)} className="cursor-pointer py-3 w-full text-white bg-rose-500 focus:outline-none focus:ring">
                 <div className="flex justify-center items-center">
                     <div className="text-md uppercase  font-medium">
                         stock update

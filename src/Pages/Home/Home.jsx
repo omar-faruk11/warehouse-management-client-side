@@ -7,7 +7,7 @@ const Home = () => {
 
   useEffect(()=>{
     (async() => {
-      const {data} = await axios.get('https://powerful-woodland-06362.herokuapp.com/products',{limit:6})
+      const {data} = await axios.get('https://powerful-woodland-06362.herokuapp.com/products')
       setProducts(data)
      })()
   },[])
@@ -27,7 +27,7 @@ const Home = () => {
       <div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-9 md:mx-14">
           {
-            products.map(product => <Prodcut key={product._id} product={product}></Prodcut>)
+            products.slice(0,6).map(product => <Prodcut key={product._id} product={product}></Prodcut>)
           }
         </div>
       </div>

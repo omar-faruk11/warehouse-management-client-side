@@ -1,12 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
-import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
-import ButtonContainer from '../Components/ButtonContainer';
+import { faBars, faSignOut, faXmark } from '@fortawesome/free-solid-svg-icons'
 import CustomLink from '../Utility/CustomLink';
 import { Link } from 'react-router-dom';
+import auth from '../firebase.config';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import {signOut } from 'firebase/auth';
+
 
 const Menubar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const [user, loading, error] = useAuthState(auth);
 
   return (
     <div className='sticky top-0 left-0 w-full'>
@@ -25,7 +29,7 @@ const Menubar = () => {
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
               {
-                navbarOpen?<FontAwesomeIcon className=' text-2xl ' icon={faXmark}/> : <FontAwesomeIcon className=' text-2xl ' icon={faBars}/>
+                navbarOpen ? <FontAwesomeIcon className=' text-2xl ' icon={faXmark} /> : <FontAwesomeIcon className=' text-2xl ' icon={faBars} />
               }
             </button>
           </div>
@@ -39,23 +43,34 @@ const Menubar = () => {
               </li>
               <li className="nav-item">
                 <CustomLink className="mx-3 py-2 flex items-center text-base uppercase  leading-snug text-white hover:opacity-75" to="/manageitems" >
-                Manage Items
+                  Manage Items
                 </CustomLink>
               </li>
               <li className="nav-item">
-                <CustomLink className="mx-3 py-2 flex items-center text-base uppercase  leading-snug text-white hover:opacity-75"to="/additem" >
-                Add Item
+                <CustomLink className="mx-3 py-2 flex items-center text-base uppercase  leading-snug text-white hover:opacity-75" to="/additem" >
+                  Add Item
                 </CustomLink>
               </li>
               <li className="nav-item">
-                <CustomLink className="mx-3 py-2 flex items-center text-base uppercase  leading-snug text-white hover:opacity-75"to="/myitems" >
-                My items
+                <CustomLink className="mx-3 py-2 flex items-center text-base uppercase  leading-snug text-white hover:opacity-75" to="/myitems" >
+                  My items
                 </CustomLink>
               </li>
               <li className="nav-item">
-                <Link to='/login'>
-                <ButtonContainer>log in</ButtonContainer>
-                </Link>
+                {
+                  user ? <>
+                      <button onClick={()=> signOut(auth)} className='text-md uppercase text-white border border-white hover:bg-rose-500 duration-500 px-5 py-1 rounded-full '>
+                        Log Out <FontAwesomeIcon icon={ faSignOut}/>
+                      </button>
+                  </> : <>
+                    <Link to='/login'>
+                      <button className='text-md uppercase text-white border border-white hover:bg-rose-500 duration-500 px-5 py-1 rounded-full '>
+                        Log In
+                      </button>
+                    </Link>
+
+                  </>
+                }
               </li>
             </ul>
           </div>

@@ -1,10 +1,13 @@
 import React from 'react';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SingInWithPopUp from '../../Components/SingInWithPopUp';
 import auth from '../../firebase.config';
 
 const Registration = () => {
+    const navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
     const [
         createUserWithEmailAndPassword,
         user,
@@ -25,7 +28,10 @@ const Registration = () => {
         await createUserWithEmailAndPassword(email,password);
         updateProfile(name);
         
-        console.log(email,password);
+       
+      };
+      if(user){
+        navigate(from, { replace: true });
       }
     return (
         <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">

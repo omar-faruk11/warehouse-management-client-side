@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../firebase.config';
 
 const SingInWithPopUp = () => {
     const navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-    if(user){
-        navigate('/')
-    }
-    console.log(error);
+    useEffect(()=>{
+        if(user){
+            navigate(from, { replace: true });
+        }
+    },[user])
     return (
         <>
             <div className="flex justify-center items-center">
