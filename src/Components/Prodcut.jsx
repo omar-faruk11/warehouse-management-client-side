@@ -25,14 +25,15 @@ const Prodcut = ({ product }) => {
                     {description.slice(0, 200)}
                 </p>
                 <p className="mt-2 text-sm text-gray-700">
+                    Supplier: {supplier}
+                </p>
+                <p className="mt-2 text-sm text-gray-700">
                     Price: ${price}
                 </p>
                 <p className="mt-2 text-sm text-gray-700">
                     Quantity: {quantity}
                 </p>
-                <p className="mt-2 text-sm text-gray-700">
-                    Supplier: {supplier}
-                </p>
+                
 
             </div>
             <div onClick={() => navigate(`/inventory/${_id}`)} className="cursor-pointer py-3 w-full text-white bg-rose-500 focus:outline-none focus:ring">

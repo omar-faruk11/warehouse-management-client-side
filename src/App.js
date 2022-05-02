@@ -11,23 +11,39 @@ import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
 import Inventory from "./Components/Inventory";
 import NotFound from "./Pages/NotFound/NotFound";
 import RequireAuth from "./Utility/RequireAuth";
+import Blogs from "./Pages/Blogs/Blogs";
 
 function App() {
   return (
     <>
       <Menubar/>
       <Routes>
-        <Route path='/' element={<Home></Home>}></Route>
-        <Route path='home' element={<Home></Home>}></Route>
+        <Route path='/' element={<Home/>}/>
+        <Route path='home' element={<Home/>}/>
+        <Route path="blogs" element={<Blogs/>}/>
         <Route path='inventory/:id' element={
-          <RequireAuth><Inventory></Inventory></RequireAuth>
-        }></Route>
-        <Route path="manageitems" element={<ManageItems></ManageItems>}></Route>
-        <Route path="additem" element={<AddItem></AddItem>}></Route>
-        <Route path="myitems" element={<MyItems></MyItems>}></Route>
-        <Route path="login" element={<Login></Login>}></Route>
-        <Route path="forgot-password" element={<ForgotPassword></ForgotPassword>}></Route>
-        <Route path="registration" element={<Registration></Registration>}></Route>
+          <RequireAuth>
+            <Inventory/>
+            </RequireAuth>
+        }/>
+        <Route path="manageitems" element={
+          <RequireAuth>
+            <ManageItems/>
+          </RequireAuth>
+        }/>
+        <Route path="additem" element={
+          <RequireAuth>
+            <AddItem/>
+          </RequireAuth>
+        }/>
+        <Route path="myitems" element={
+        <RequireAuth>
+          <MyItems/>
+        </RequireAuth>
+        }/>
+        <Route path="login" element={<Login></Login>}/>
+        <Route path="forgot-password" element={<ForgotPassword></ForgotPassword>}/>
+        <Route path="registration" element={<Registration></Registration>}/>
         <Route path="*" element={<NotFound/>}/>
       </Routes>
     </>

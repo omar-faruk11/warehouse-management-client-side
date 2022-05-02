@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect}from 'react';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SingInWithPopUp from '../../Components/SingInWithPopUp';
@@ -8,31 +8,35 @@ const Registration = () => {
     const navigate = useNavigate();
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
+    const [notmatch, setNotmatch] = useState('')
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
-      ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification: true});
-      const [updateProfile, updating, updeterror] = useUpdateProfile(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [updateProfile, updating, updeterror] = useUpdateProfile(auth);
 
-      const handleCreateUserWithEailPass = async (event) =>{
+    const handleCreateUserWithEailPass = async (event) => {
         event.preventDefault()
         const email = event.target.email.value;
         const name = event.target.name.value;
         const password = event.target.password.value;
         const confirmPassword = event.target.confirmPassword.value;
-        if(password !== confirmPassword){
-
+        if (password === confirmPassword) {
+            await createUserWithEmailAndPassword(email, password);
+            updateProfile(name);
         }
-        await createUserWithEmailAndPassword(email,password);
-        updateProfile(name);
-        
-       
-      };
-      if(user){
-        navigate(from, { replace: true });
-      }
+        else{
+            setNotmatch('Password not match')
+        }
+
+    };
+    useEffect(()=>{
+        if (user) {
+            navigate(from, { replace: true });
+        }
+    },[user])
     return (
         <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
             <div className="max-w-lg mx-auto">
@@ -41,14 +45,14 @@ const Registration = () => {
                     <div>
                         <label htmlFor="name" className="text-sm font-medium">Name</label>
 
-                        <div className="relative mt-1">
+                        <div className=" mt-1">
                             <input
                                 type="text"
                                 id="text"
                                 name='name'
                                 className="w-full p-3 pr-12 text-base border border-gray-200 rounded-lg shadow-sm"
                                 placeholder="Your Name"
-                        
+
                             />
 
                         </div>
@@ -56,7 +60,7 @@ const Registration = () => {
                     <div>
                         <label htmlFor="email" className="text-sm font-medium">Email</label>
 
-                        <div className="relative mt-1">
+                        <div className=" mt-1">
                             <input
                                 type="email"
                                 id="email"
@@ -72,7 +76,7 @@ const Registration = () => {
                     <div>
                         <label htmlFor="password" className="text-sm font-medium">Password</label>
 
-                        <div className="relative mt-1">
+                        <div className=" mt-1">
                             <input
                                 type="password"
                                 id="password"
@@ -88,7 +92,7 @@ const Registration = () => {
                     <div>
                         <label htmlFor="confirm-password" className="text-sm font-medium">Confirm  Password</label>
 
-                        <div className="relative mt-1">
+                        <div className=" mt-1">
                             <input
                                 type="password"
                                 id="confirm-password"
@@ -102,7 +106,10 @@ const Registration = () => {
                         </div>
                     </div>
                     {
-                        error? <p>{error.message}</p> : ''
+                        notmatch? notmatch : ''
+                    }
+                    {
+                        error ? <p>{error.message}</p> : ''
                     }
 
                     <button type="submit" className="block w-full px-5 py-3 text-sm font-medium text-white bg-rose-500 rounded-lg">
@@ -113,7 +120,7 @@ const Registration = () => {
                         Alrady heve an account?
                         <Link className='text-rose-500' to='/login'> LogIn</Link>
                     </p>
-                    <SingInWithPopUp/>
+                    <SingInWithPopUp />
                 </form>
 
             </div>

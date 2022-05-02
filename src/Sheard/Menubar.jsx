@@ -5,7 +5,7 @@ import CustomLink from '../Utility/CustomLink';
 import { Link } from 'react-router-dom';
 import auth from '../firebase.config';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import {signOut } from 'firebase/auth';
+import { signOut } from 'firebase/auth';
 
 
 const Menubar = () => {
@@ -42,26 +42,35 @@ const Menubar = () => {
                 </CustomLink>
               </li>
               <li className="nav-item">
-                <CustomLink className="mx-3 py-2 flex items-center text-base uppercase  leading-snug text-white hover:opacity-75" to="/manageitems" >
-                  Manage Items
+                <CustomLink className="mx-3 py-2 flex items-center text-base uppercase   leading-snug text-white hover:opacity-75" to="/blogs" >
+                blogs
                 </CustomLink>
               </li>
-              <li className="nav-item">
-                <CustomLink className="mx-3 py-2 flex items-center text-base uppercase  leading-snug text-white hover:opacity-75" to="/additem" >
-                  Add Item
-                </CustomLink>
-              </li>
-              <li className="nav-item">
-                <CustomLink className="mx-3 py-2 flex items-center text-base uppercase  leading-snug text-white hover:opacity-75" to="/myitems" >
-                  My items
-                </CustomLink>
-              </li>
+              {
+                user && <>
+                  <li className="nav-item">
+                    <CustomLink className="mx-3 py-2 flex items-center text-base uppercase  leading-snug text-white hover:opacity-75" to="/manageitems" >
+                      Manage Items
+                    </CustomLink>
+                  </li>
+                  <li className="nav-item">
+                    <CustomLink className="mx-3 py-2 flex items-center text-base uppercase  leading-snug text-white hover:opacity-75" to="/additem" >
+                      Add Item
+                    </CustomLink>
+                  </li>
+                  <li className="nav-item">
+                    <CustomLink className="mx-3 py-2 flex items-center text-base uppercase  leading-snug text-white hover:opacity-75" to="/myitems" >
+                      My items
+                    </CustomLink>
+                  </li>
+                </>
+              }
               <li className="nav-item">
                 {
                   user ? <>
-                      <button onClick={()=> signOut(auth)} className='text-md uppercase text-white border border-white hover:bg-rose-500 duration-500 px-5 py-1 rounded-full '>
-                        Log Out <FontAwesomeIcon icon={ faSignOut}/>
-                      </button>
+                    <button onClick={() => signOut(auth)} className='text-md uppercase text-white border border-white hover:bg-rose-500 duration-500 px-5 py-1 rounded-full '>
+                      Log Out <FontAwesomeIcon icon={faSignOut} />
+                    </button>
                   </> : <>
                     <Link to='/login'>
                       <button className='text-md uppercase text-white border border-white hover:bg-rose-500 duration-500 px-5 py-1 rounded-full '>
