@@ -50,7 +50,7 @@ const Menubar = () => {
                 user && <>
                   <li className="nav-item">
                     <CustomLink className="mx-3 py-2 flex items-center text-base uppercase  leading-snug text-white hover:opacity-75" to="/manageitems" >
-                      Manage Items
+                    Manage Inventories
                     </CustomLink>
                   </li>
                   <li className="nav-item">
@@ -68,12 +68,12 @@ const Menubar = () => {
               <li className="nav-item">
                 {
                   user ? <>
-                    <button onClick={() => signOut(auth)} className='text-md uppercase text-white border border-white hover:bg-rose-500 duration-500 px-5 py-1 rounded-full '>
+                    <button onClick={() => signOut(auth)} className='text-md uppercase text-white border hover:border-rose-600 duration-1000 hover:bg-rose-500  px-5 py-1 rounded-full '>
                       Log Out <FontAwesomeIcon icon={faSignOut} />
                     </button>
                   </> : <>
                     <Link to='/login'>
-                      <button className='text-md uppercase text-white border border-white hover:bg-rose-500 duration-500 px-5 py-1 rounded-full '>
+                      <button className='text-md uppercase text-white border hover:border-rose-600 duration-1000 hover:bg-rose-500  px-5 py-1 rounded-full '>
                         Log In
                       </button>
                     </Link>

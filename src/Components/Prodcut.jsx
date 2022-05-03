@@ -7,11 +7,11 @@ const Prodcut = ({ product }) => {
 
     
     return (
-        <div className='border'>
+        <div className='border-[1px] border-gray-100 hover:shadow-2xl rounded-xl '>
             
             <img
 
-                className="object-cover w-full h-56 "
+                className="object-cover w-full h-56 rounded-t-xl"
                 src={picture}
                 alt=""
             />
@@ -36,15 +36,11 @@ const Prodcut = ({ product }) => {
                 
 
             </div>
-            <div onClick={() => navigate(`/inventory/${_id}`)} className="cursor-pointer py-3 w-full text-white bg-rose-500 focus:outline-none focus:ring">
+            <div onClick={() => navigate(`/inventory/${_id}`)} className="cursor-pointer py-3 w-full rounded-b-xl text-white bg-rose-500 focus:outline-none focus:ring">
                 <div className="flex justify-center items-center">
                     <div className="text-md uppercase  font-medium">
                         stock update
                     </div>
-
-                    <svg className="w-5 h-5 ml-2 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
                 </div>
             </div>
         </div>

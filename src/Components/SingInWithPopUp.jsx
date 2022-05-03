@@ -15,12 +15,12 @@ const SingInWithPopUp = () => {
     },[user])
     return (
         <>
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center ">
                 <div className="h-[1px] bg-black w-10/12"></div>
                 <div className=' mx-3'> Or</div>
                 <div className="h-[1px] bg-black w-10/12"></div>
             </div>
-            <div  onClick={()=> signInWithGoogle()} className=" w-full px-5 py-3 text-lg border rounded-lg flex justify-center items-center cursor-pointer">
+            <div  onClick={()=> signInWithGoogle()} className=" bg-gray-200 focus:bg-white w-full px-5 py-3 text-lg border rounded-lg flex justify-center items-center cursor-pointer">
                 <img src="https://img.icons8.com/color/25/000000/google-logo.png" alt="google logo" />
                 <div className='mx-2'>Sign in with Google</div>
             </div>

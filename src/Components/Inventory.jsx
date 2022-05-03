@@ -1,12 +1,13 @@
 import { getValue } from '@testing-library/user-event/dist/utils';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Inventory = () => {
     const { id } = useParams();
     const [product, setproduct] = useState({});
     const { name, picture, description, price, quantity, supplier } = product;
+    const navigate = useNavigate();
     useEffect(() => {
         (async () => {
             const { data } = await axios.get(`https://powerful-woodland-06362.herokuapp.com/products/${id}`)
@@ -67,27 +68,27 @@ const Inventory = () => {
                                 </p>
                             </> : <p className="mt-2 text-sm text-gray-800" >Stock Out</p>
                         }
-                        <button onClick={handledelivered} className=' px-5 py-1 text-white bg-rose-500 mt-3 group active:bg-rose-500 focus:outline-none focus:ring disabled:bg-gray-300 rounded-sm' disabled={!quantity}>
+                        <button onClick={handledelivered} className=' px-5 py-1 text-white bg-rose-500 mt-3 group active:bg-rose-400 focus:outline-none  disabled:bg-gray-300 rounded-sm' disabled={!quantity}>
                             Delivered
                         </button>
                         <p className='mt-5 uppercase text-lg mb-3'> restock the items:</p>
                         <form onSubmit={handleRestock} >
                             <input className=' bg-gray-200 w-24 pl-7' type="number" min={1} name="number" id="number" />
-                            <input className=' bg-rose-500 px-3 ml-1 text-white group active:bg-rose-500 focus:outline-none focus:ring cursor-pointer' type="submit" value="Restock" />
+                            <input className=' bg-rose-500 px-3 ml-1 text-white group active:bg-rose-400 focus:outline-none  cursor-pointer' type="submit" value="Restock" />
                         </form>
                     </div>
                 </div>
 
             </div>
 
-            <div className='absolute right-20 mt-5 cursor-pointer'>
-                <div class="relative rounded-full inline-flex items-center px-8 py-3 overflow-hidden text-white bg-rose-600  group active:bg-rose-500 focus:outline-none focus:ring">
-                    <span class="text-lg">
+            <div onClick={()=> navigate('/manageitems')} className='absolute right-4 md:right-20 mt-5 cursor-pointer'>
+                <div className="relative rounded-full inline-flex items-center px-8 py-3 overflow-hidden text-white bg-rose-600  group active:bg-rose-500 focus:outline-none focus:ring">
+                    <span className="text-lg">
                     Manage Inventories
                     </span>
 
-                    <svg class="w-7 h-6 ml-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    <svg className="w-7 h-6 ml-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
 
                 </div>
