@@ -14,27 +14,30 @@ const ManageItems = () => {
         })()
     }, []);
     return (
-        <div>
-            <div className=" overflow-x-auto shadow-md sm:rounded-lg mx-3 px-1 md:mx-24 ">
+        <>
+            <div className=" overflow-x-auto shadow-md sm:rounded-lg  px-1 md:mx-24 ">
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead className="text-md text-gray-700 uppercase font-normal bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" className="md:px-6 py-3">
+                            <th scope="col" className="px-2 md:px-6 py-3">
                                 Image
                             </th>
-                            <th scope="col" className="md:px-6 py-3">
+                            <th scope="col" className="px-2 md:px-6 py-3">
                                 Name
                             </th>
-                            <th scope="col" className="md:px-6 py-3">
+                            <th scope="col" className="px-2 md:px-6 py-3">
                                 Supplier
                             </th>
-                            <th scope="col" className="md:px-6 py-3">
+                            <th scope="col" className="px-2 md:px-6 py-3">
                                 quantity
                             </th>
-                            <th scope="col" className="md:px-6 py-3">
+                            <th scope="col" className="px-2 md:px-6 py-3">
                                 Price
                             </th>
-                            <th scope="col" className="md:px-6 py-3">
+                            <th scope="col" className="px-2 md:px-6 py-3">
+                                HOOL
+                            </th>
+                            <th scope="col" className="px-2 md:px-6 py-3">
                             </th>
                         </tr>
                     </thead>
@@ -57,7 +60,7 @@ const ManageItems = () => {
 
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

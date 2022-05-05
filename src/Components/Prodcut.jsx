@@ -7,7 +7,7 @@ const Prodcut = ({ product }) => {
 
     
     return (
-        <div className='border-[1px] border-gray-100 hover:shadow-2xl rounded-xl '>
+        <div className='relative border-[1px] border-gray-100 hover:shadow-2xl rounded-xl '>
             
             <img
 
@@ -16,7 +16,7 @@ const Prodcut = ({ product }) => {
                 alt=""
             />
             
-            <div className="p-6">
+            <div className="p-6 mb-10">
                 <h5 className="text-xl">
                     {name}
                 </h5>
@@ -36,7 +36,7 @@ const Prodcut = ({ product }) => {
                 
 
             </div>
-            <div onClick={() => navigate(`/inventory/${_id}`)} className="cursor-pointer py-3 w-full rounded-b-xl text-white bg-rose-500 focus:outline-none focus:ring">
+            <div onClick={() => navigate(`/inventory/${_id}`)} className=" absolute bottom-0  cursor-pointer py-3 w-full rounded-b-xl text-white bg-rose-500 focus:outline-none focus:ring">
                 <div className="flex justify-center items-center">
                     <div className="text-md uppercase  font-medium">
                         stock update

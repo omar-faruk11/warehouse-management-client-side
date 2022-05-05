@@ -8,7 +8,7 @@ import auth from '../../firebase.config';
 const Login = () => {
     const navigate = useNavigate();
     let location = useLocation();
-    const [coruntuser, coruntloading, corunterror] = useAuthState(auth);
+    const [currentuser, loadinG, erroR] = useAuthState(auth);
     let from = location.state?.from?.pathname || "/";
 
     const [
@@ -26,12 +26,12 @@ const Login = () => {
     };
 
     useEffect(() => {
-        if (coruntuser) {
+        if (currentuser) {
             navigate(from, { replace: true });
         };
-    }, [coruntuser])
+    }, [currentuser])
     
-    if (coruntloading) {
+    if (loadinG) {
         return <p>Loading...</p>
     }
 
@@ -77,7 +77,7 @@ const Login = () => {
                     {
                         error ? <p>{error.message}</p> : ''
                     }
-                    <button type="submit" className="block w-full px-5 py-3 text-sm font-medium text-white bg-rose-500 rounded-lg">
+                    <button type="submit" className="block w-full px-5 py-3 text-sm font-medium text-white bg-rose-500 active:bg-rose-400 rounded-lg">
                         Log in
                     </button>
 

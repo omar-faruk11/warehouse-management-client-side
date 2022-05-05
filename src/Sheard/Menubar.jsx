@@ -13,12 +13,12 @@ const Menubar = () => {
   const [user, loading, error] = useAuthState(auth);
 
   return (
-    <div className='sticky top-0 left-0 w-full'>
+    <div className='z top-0 left-0 w-full'>
       <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-slate-500 mb-3 ">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <Link
-              className="text-base  leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
+              className="text-base  leading-relaxed inline-block mr-4  whitespace-nowrap uppercase text-white"
               to="/"
             >
               slate Tailwind Starter Kit
@@ -36,44 +36,44 @@ const Menubar = () => {
           <div
             className={"lg:flex flex-grow items-center " + (navbarOpen ? " flex" : " hidden")} id="example-navbar-danger" >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-              <li className="nav-item">
-                <CustomLink className="mx-3 py-2 flex items-center text-base uppercase   leading-snug text-white hover:opacity-75" to="/" >
+              <li className="nav-item py-1 mt-2">
+                <CustomLink className="mx-3  md:flex items-center text-base uppercase   leading-snug text-white hover:opacity-75" to="/" >
                   Home
                 </CustomLink>
               </li>
-              <li className="nav-item">
-                <CustomLink className="mx-3 py-2 flex items-center text-base uppercase   leading-snug text-white hover:opacity-75" to="/blogs" >
+              <li className="nav-item py-1 mt-2">
+                <CustomLink className="mx-3  md:flex items-center text-base uppercase   leading-snug text-white hover:opacity-75" to="/blogs" >
                 blogs
                 </CustomLink>
               </li>
               {
                 user && <>
-                  <li className="nav-item">
-                    <CustomLink className="mx-3 py-2 flex items-center text-base uppercase  leading-snug text-white hover:opacity-75" to="/manageitems" >
+                  <li className="nav-item py-1 mt-2">
+                    <CustomLink className="mx-3  md:flex items-center text-base uppercase  leading-snug text-white hover:opacity-75" to="/manageitems" >
                     Manage Inventories
                     </CustomLink>
                   </li>
-                  <li className="nav-item">
-                    <CustomLink className="mx-3 py-2 flex items-center text-base uppercase  leading-snug text-white hover:opacity-75" to="/additem" >
+                  <li className="nav-item py-1 mt-2">
+                    <CustomLink className="mx-3  md:flex items-center text-base uppercase  leading-snug text-white hover:opacity-75" to="/additem" >
                       Add Item
                     </CustomLink>
                   </li>
-                  <li className="nav-item">
-                    <CustomLink className="mx-3 py-2 flex items-center text-base uppercase  leading-snug text-white hover:opacity-75" to="/myitems" >
+                  <li className="nav-item py-1 mt-2">
+                    <CustomLink className="mx-3  md:flex items-center text-base uppercase  leading-snug text-white hover:opacity-75" to="/myitems" >
                       My items
                     </CustomLink>
                   </li>
                 </>
               }
-              <li className="nav-item">
+              <li className="nav-item  mt-2">
                 {
                   user ? <>
-                    <button onClick={() => signOut(auth)} className='text-md uppercase text-white border hover:border-rose-600 duration-1000 hover:bg-rose-500  px-5 py-1 rounded-full '>
+                    <button onClick={() => signOut(auth)} className=' text-md uppercase text-white border hover:border-rose-600 duration-1000  hover:bg-rose-500  px-5 py-1 rounded-full '>
                       Log Out <FontAwesomeIcon icon={faSignOut} />
                     </button>
                   </> : <>
                     <Link to='/login'>
-                      <button className='text-md uppercase text-white border hover:border-rose-600 duration-1000 hover:bg-rose-500  px-5 py-1 rounded-full '>
+                      <button className=' text-md uppercase text-white border hover:border-rose-600 duration-1000 hover:bg-rose-500  px-5 py-1  rounded-full '>
                         Log In
                       </button>
                     </Link>

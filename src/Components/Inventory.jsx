@@ -21,9 +21,10 @@ const Inventory = () => {
             const { quantity, ...rest } = product;
             const newQuantity = quantity - 1;
             const newProduct = { quantity: newQuantity, ...rest };
+            setproduct(newProduct);
             (async () => {
                 await axios.put(`https://powerful-woodland-06362.herokuapp.com/product/${id}`, { newQuantity })
-                setproduct(newProduct)
+                
             })();
         }
     }
@@ -34,14 +35,15 @@ const Inventory = () => {
             const { quantity, ...rest } = product;
             const newQuantity = quantity + productQuantity;
             const newProduct = { quantity: newQuantity, ...rest };
+            setproduct(newProduct);
             (async () => {
                 await axios.put(`https://powerful-woodland-06362.herokuapp.com/product/${id}`, { newQuantity })
-                setproduct(newProduct)
+                
                 event.target.reset()
             })()
         }
 
-    };
+    };  
 
     return (
         <>

@@ -26,6 +26,7 @@ const Home = () => {
         </div>
       </div> */}
 
+
         <div>
           <div className=' uppercase flex justify-center text-3xl my-5 '>inventory items</div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-9 md:mx-14">

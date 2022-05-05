@@ -12,11 +12,13 @@ import Inventory from "./Components/Inventory";
 import NotFound from "./Pages/NotFound/NotFound";
 import RequireAuth from "./Utility/RequireAuth";
 import Blogs from "./Pages/Blogs/Blogs";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <>
       <Menubar/>
+      <ToastContainer/>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='home' element={<Home/>}/>
