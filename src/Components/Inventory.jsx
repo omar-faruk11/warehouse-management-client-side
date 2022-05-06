@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
 import { getValue } from '@testing-library/user-event/dist/utils';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
@@ -33,13 +35,14 @@ const Inventory = () => {
         event.preventDefault();
         if (productQuantity) {
             const { quantity, ...rest } = product;
-            const newQuantity = quantity + productQuantity;
+            const newQuantity = parseInt(quantity + productQuantity);
             const newProduct = { quantity: newQuantity, ...rest };
             setproduct(newProduct);
+            
+            event.target.reset();
             (async () => {
                 await axios.put(`https://powerful-woodland-06362.herokuapp.com/product/${id}`, { newQuantity })
                 
-                event.target.reset()
             })()
         }
 
@@ -47,6 +50,9 @@ const Inventory = () => {
 
     return (
         <>
+        <div>
+            <FontAwesomeIcon onClick={()=> navigate(-1)} className=' w-10 h-8 ml-5 cursor-pointer' icon={faArrowLeftLong}/>
+        </div>
             <div className='container mx-auto mt-6'>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-5 w-full md:w-11/12 mx-auto hover:shadow-lg p-6 border-[1px] border-gray-200">
                     <div className="md:col-span-2">

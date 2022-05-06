@@ -2,19 +2,26 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ManageItem from '../../Components/ManageItem';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../../Components/Loading';
 
 const ManageItems = () => {
     const [products, setProducts] = useState([]);
+    const [webLoading, setWebLoading] = useState(true);
     const navigate = useNavigate()
 
     useEffect(() => {
         (async () => {
             const { data } = await axios.get('https://powerful-woodland-06362.herokuapp.com/products')
             setProducts(data)
+            setWebLoading(false)
         })()
     }, []);
+    if(webLoading){
+        return <Loading/>
+    }
     return (
         <>
+        <h2 className="flex justify-center items-center text-3xl my-5 uppercase">Manage Inventories</h2>
             <div className=" overflow-x-auto shadow-md sm:rounded-lg  px-1 md:mx-24 ">
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead className="text-md text-gray-700 uppercase font-normal bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -35,7 +42,7 @@ const ManageItems = () => {
                                 Price
                             </th>
                             <th scope="col" className="px-2 md:px-6 py-3">
-                                HOOL
+                                
                             </th>
                             <th scope="col" className="px-2 md:px-6 py-3">
                             </th>

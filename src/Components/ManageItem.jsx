@@ -51,7 +51,7 @@ const ManageItem = ({ product, products, setProducts }) => {
                     {price}
                 </td>
                 <td className="md:pl-6 py-4">
-                <button onClick={()=>navigate(`/inventory/${_id}`)}  className=' rounded border border-rose-500 px-2 py-1 hover:bg-rose-500 hover:text-white focus:right-1'>stock update</button>
+                <button onClick={()=>navigate(`/inventory/${_id}`)}  className=' rounded border border-rose-500 px-2 py-1 hover:bg-rose-500 hover:text-white focus:right-1'>Stock Update</button>
                 </td>
                 <td className="md:px-2 py-4 text-right ">
                     <FontAwesomeIcon onClick={() => handleDeleteItem(_id)} className='w-6 h-6  cursor-pointer  text-red-600 active:bg-rose-300 p-2 rounded-full' icon={faTrashCan}></FontAwesomeIcon>

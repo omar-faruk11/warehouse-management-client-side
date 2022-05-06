@@ -1,7 +1,9 @@
-import React,{useEffect} from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Loading from '../../Components/Loading';
 import SingInWithPopUp from '../../Components/SingInWithPopUp';
 import auth from '../../firebase.config';
 
@@ -11,29 +13,39 @@ const Login = () => {
     const [currentuser, loadinG, erroR] = useAuthState(auth);
     let from = location.state?.from?.pathname || "/";
 
+    
     const [
         signInWithEmailAndPassword,
         user,
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
-
-    const handleSignInWithEailPass = (event) => {
+    const handleSignInWithEailPass = async (event) => {
         event.preventDefault()
         const email = event.target.email.value;
         const password = event.target.password.value;
-        signInWithEmailAndPassword(email, password)
-    };
+        await signInWithEmailAndPassword(email, password);
+        (async () => {
+            const { data } = await axios.post('https://powerful-woodland-06362.herokuapp.com/login', { email });
+            if (data) {
+                localStorage.setItem('accessToken', data)
+                navigate(from, { replace: true });
+            }
 
-    useEffect(() => {
-        if (currentuser) {
-            navigate(from, { replace: true });
-        };
-    }, [currentuser])
+        })();
+    };
     
-    if (loadinG) {
-        return <p>Loading...</p>
-    }
+    useEffect(()=>{
+        if(currentuser){
+            navigate(from, { replace: true });
+    
+        }
+    },[currentuser])
+    if (loading || loadinG) {
+        return <Loading/>
+    };
+    
+
 
     return (
         <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">

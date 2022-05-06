@@ -1,4 +1,5 @@
-import React,{useState,useEffect}from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SingInWithPopUp from '../../Components/SingInWithPopUp';
@@ -26,17 +27,22 @@ const Registration = () => {
         if (password === confirmPassword) {
             await createUserWithEmailAndPassword(email, password);
             updateProfile(name);
+            const { data } = await axios.post('https://powerful-woodland-06362.herokuapp.com/login', { email });
+            if (data) {
+                localStorage.setItem('accessToken', data)
+                navigate(from, { replace: true });
+            }
         }
-        else{
+        else {
             setNotmatch('Password not match')
         }
 
     };
-    useEffect(()=>{
+    useEffect(() => {
         if (user) {
             navigate(from, { replace: true });
         }
-    },[user])
+    }, [user])
     return (
         <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
             <div className="max-w-lg mx-auto">
@@ -106,7 +112,7 @@ const Registration = () => {
                         </div>
                     </div>
                     {
-                        notmatch? notmatch : ''
+                        notmatch ? notmatch : ''
                     }
                     {
                         error ? <p>{error.message}</p> : ''

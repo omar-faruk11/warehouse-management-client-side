@@ -26,9 +26,9 @@ const Myitem = ({ myitem,myItems, setMyItems }) => {
         }
     }
     return (
-        <div className=''>
-            <dir className="grid grid-cols-5  rounded rounded-l-none shadow-md hover:shadow-2xl hover:border-l-2  border-rose-500 p-4 ">
-                <div className="col-span-2">
+        <div className=' '>
+            <dir className="grid grid-cols-5  h-full rounded rounded-l-none shadow-md hover:shadow-2xl hover:border-l-2  border-rose-500 p-4 ">
+                <div className="col-span-2 ">
                     <img className='w-full h-full' src={picture} alt="" />
                 </div>
                 <div className="col-span-3">
@@ -37,7 +37,7 @@ const Myitem = ({ myitem,myItems, setMyItems }) => {
                         {name}
                     </h5>
 
-                    <p className="mt-2 text-sm text-gray-600">
+                    <p className="mt-2 text-sm text-gray-600 break-words">
                         {description.slice(0, 150)}
                     </p>
                     <p className="mt-2 text-sm text-gray-700">
