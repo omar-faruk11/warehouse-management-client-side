@@ -13,15 +13,15 @@ const Menubar = () => {
   const [user, loading, error] = useAuthState(auth);
 
   return (
-    <div className='w-full'>
+    <div className='w-full fixed z-50 top-0'>
       <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-slate-500 ">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <Link
-              className="text-base  leading-relaxed inline-block mr-4  whitespace-nowrap uppercase text-white"
+              className="text-base  leading-relaxed inline-block mr-4 mt-1 md:mt-auto whitespace-nowrap uppercase text-white"
               to="/"
             >
-              slate Tailwind Starter Kit
+              
             </Link>
             <button
               className="text-white cursor-pointer text-xl leading-none mx-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"

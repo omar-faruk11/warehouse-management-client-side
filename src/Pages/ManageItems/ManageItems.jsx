@@ -21,7 +21,7 @@ const ManageItems = () => {
     }
     return (
         <>
-        <h2 className="flex justify-center items-center text-3xl my-5 uppercase">Manage Inventories</h2>
+        <h2 className="flex justify-center items-center text-3xl my-5 uppercase mt-20">Manage Inventories</h2>
             <div className=" overflow-x-auto shadow-md sm:rounded-lg  px-1 md:mx-24 ">
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead className="text-md text-gray-700 uppercase font-normal bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

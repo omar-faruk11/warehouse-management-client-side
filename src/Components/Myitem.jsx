@@ -27,11 +27,11 @@ const Myitem = ({ myitem,myItems, setMyItems }) => {
     }
     return (
         <div className=' '>
-            <dir className="grid grid-cols-5  h-full rounded rounded-l-none shadow-md hover:shadow-2xl hover:border-l-2  border-rose-500 p-4 ">
-                <div className="col-span-2 ">
+            <dir className="grid md:grid-cols-5  h-full rounded rounded-l-none shadow-md hover:shadow-2xl hover:border-l-2  border-rose-500 p-4 ">
+                <div className="md:col-span-2 ">
                     <img className='w-full h-full' src={picture} alt="" />
                 </div>
-                <div className="col-span-3">
+                <div className="md:col-span-3 mt-4 md:mt-0">
                     <div className="pl-4">
                     <h5 className="text-xl">
                         {name}

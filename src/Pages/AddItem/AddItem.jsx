@@ -28,7 +28,7 @@ const AddItem = () => {
     };
     return (
         <>
-            <div className='uppercase flex justify-center text-3xl my-5'>Add New Item</div>
+            <div className='uppercase flex justify-center text-3xl mt-20 mb-5'>Add New Item</div>
             <form className='   md:w-3/6 mx-4 md:mx-auto' onSubmit={handleSubmit(onSubmit)}>
                 {/* register your input into the hook by invoking the "register" function */}
                 <input className="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded my-2 " placeholder='Product Name'{...register("name", { required: true })} />

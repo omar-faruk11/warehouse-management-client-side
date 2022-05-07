@@ -38,7 +38,7 @@ const MyItems = () => {
     
     return (
         <>
-            <h2 className='uppercase flex justify-center text-3xl my-5'>My Items</h2>
+            <h2 className='uppercase flex justify-center text-3xl mb-5 mt-20'>My Items</h2>
             {
                 myItems.length === 0 && <h2 className=' text-2xl text-gray-400 ml-10'>No Item Found</h2>
             }

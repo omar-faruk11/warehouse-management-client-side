@@ -11,9 +11,10 @@ const Home = () => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get('https://powerful-woodland-06362.herokuapp.com/products')
-      setProducts(data)
-      setWebLoading(false)
+      const { data } = await axios.get('https://powerful-woodland-06362.herokuapp.com/products');
+      setProducts(data);
+      console.log(data);
+      setWebLoading(false);
     })()
   }, []);
   if(webLoading){
