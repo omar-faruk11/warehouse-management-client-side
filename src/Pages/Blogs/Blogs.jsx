@@ -2,7 +2,7 @@ import React from 'react';
 
 const Blogs = () => {
     return (
-        <div className=' container mx-auto mt-20'>
+        <div className=' container mx-auto mt-20 '>
             <div className="flex justify-center items-center text-2xl uppercase my-5"> My blogs</div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                 <div className=" rounded rounded-l-none border-l-2 shadow-md border-rose-500 p-4  text-justify">

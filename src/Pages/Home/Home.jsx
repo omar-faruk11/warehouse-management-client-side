@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../../Components/Loading';
 import Prodcut from '../../Components/Prodcut';
+import Footer from '../../Sheard/Footer';
 const axios = require('axios');
 
 const Home = () => {
@@ -23,19 +24,11 @@ const Home = () => {
 
   return (
     <>
-      <div className="">
-        {/* <div className="grid grid-cols-2 md:grid-cols-5">
-        <div className="col-span-3">
-
-        </div>
-        <div className="col-span-2">
-          <img className=' w-full rounded-lg' src="https://i.ibb.co/vxXBRBL/banner.jpg" alt="" />
-        </div>
-      </div> */}
+      <div>
         <div className="relative bg-black">
           <img
-            className="absolute inset-0 object-[75%] sm:object-[25%] object-cover w-full h-full opacity-25 sm:opacity-100"
-            src=" https://hosfeltelectronics.com/wp-content/uploads/2021/05/consumer-electronics-1.jpg"
+            className="absolute inset-0 object-[75%] sm:object-[25%] object-cover w-full h-full opacity-25 sm:opacity-100 "
+            src=" https://www.kindpng.com/picc/m/539-5393718_responsive-web-design-mobile-tab-and-pc-png.png"
             alt=''
           />
 
@@ -43,25 +36,22 @@ const Home = () => {
 
           <div className="relative max-w-screen-xl px-4 py-32 mx-auto lg:h-screen lg:items-center lg:flex">
             <div className="max-w-xl text-center sm:text-left ml-14">
-              <h1 className="text-3xl font-extrabold sm:text-5xl text-white">
-                Let us find your
-                <strong className="font-extrabold text-rose-600 sm:block">
-                  Forever Home.
+              <h1 className="text-3xl font-extrabold sm:text-5xl text-white uppercase">
+              electronics 
+                <strong className="font-extrabold text-rose-600 sm:block uppercase ">
+                 warehouse
                 </strong>
               </h1>
 
               <p className="max-w-lg mt-4 sm:leading-relaxed sm:text-xl text-white">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo tenetur fuga ducimus numquam ea!
+                The best Electronics warehouse. There are many product of our warehouse. Now you can manage product , add product, and delete product.
               </p>
 
               <div className="flex flex-wrap gap-4 mt-8 text-center">
-                <a className="block w-full px-12 py-3 text-sm font-medium text-white rounded shadow bg-rose-600 sm:w-auto active:bg-rose-500 hover:bg-rose-700 focus:outline-none focus:ring" href="/get-started">
+                <div className="block w-full px-12 py-3 text-sm font-medium cursor-pointer text-white rounded shadow bg-rose-600 sm:w-auto active:bg-rose-500 hover:bg-rose-700 focus:outline-none focus:ring">
                   Get Started
-                </a>
+                </div>
 
-                <a className="block w-full px-12 py-3 text-sm font-medium bg-white rounded shadow text-rose-600 sm:w-auto hover:text-rose-700 active:text-rose-500 focus:outline-none focus:ring" href="/about">
-                  Learn More
-                </a>
               </div>
             </div>
           </div>
@@ -89,6 +79,7 @@ const Home = () => {
 
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

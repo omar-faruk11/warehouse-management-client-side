@@ -18,10 +18,10 @@ const Menubar = () => {
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <Link
-              className="text-base  leading-relaxed inline-block mr-4 mt-1 md:mt-auto whitespace-nowrap uppercase text-white"
+              className="text-2xl  leading-relaxed inline-block mr-4 mt-1 md:mt-auto whitespace-nowrap uppercase text-white"
               to="/"
             >
-              
+              electronics Corner
             </Link>
             <button
               className="text-white cursor-pointer text-xl leading-none mx-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"

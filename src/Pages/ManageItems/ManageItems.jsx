@@ -56,7 +56,7 @@ const ManageItems = () => {
                 </table>
             </div>
             <div onClick={() => navigate('/additem')} className='absolute right-4 md:right-20 mt-5 cursor-pointer'>
-                <div className="relative rounded-full inline-flex items-center px-8 py-3 overflow-hidden text-white bg-rose-600  group active:bg-rose-500 focus:outline-none focus:ring">
+                <div className="relative mb-2 rounded-full inline-flex items-center px-8 py-3 overflow-hidden text-white bg-slate-500  group active:bg-slate-800 focus:outline-none focus:ring">
                     <span className="text-lg">
                         Add new item
                     </span>

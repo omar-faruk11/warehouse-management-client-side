@@ -48,6 +48,7 @@ function App() {
         <Route path="registration" element={<Registration></Registration>}/>
         <Route path="*" element={<NotFound/>}/>
       </Routes>
+      
     </>
     
   );
