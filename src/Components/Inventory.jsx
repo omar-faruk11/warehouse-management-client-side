@@ -8,7 +8,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 const Inventory = () => {
     const { id } = useParams();
     const [product, setproduct] = useState({});
-    const { name, picture, description, price, quantity, supplier } = product;
+    const {_id, name, picture, description, price, quantity, supplier } = product;
     const navigate = useNavigate();
     useEffect(() => {
         (async () => {
@@ -35,10 +35,10 @@ const Inventory = () => {
         event.preventDefault();
         if (productQuantity) {
             const { quantity, ...rest } = product;
-            const newQuantity = parseInt(quantity + productQuantity);
+            const numQuantity = parseInt(quantity);
+            const newQuantity = numQuantity + productQuantity;
             const newProduct = { quantity: newQuantity, ...rest };
             setproduct(newProduct);
-            
             event.target.reset();
             (async () => {
                 await axios.put(`https://powerful-woodland-06362.herokuapp.com/product/${id}`, { newQuantity })
@@ -50,7 +50,7 @@ const Inventory = () => {
 
     return (
         <>
-        <div>
+        <div  className=' mt-20'>
             <FontAwesomeIcon onClick={()=> navigate(-1)} className=' w-10 h-8 ml-5 cursor-pointer' icon={faArrowLeftLong}/>
         </div>
             <div className='container mx-auto mt-6'>
@@ -60,6 +60,7 @@ const Inventory = () => {
                     </div>
                     <div className="md:col-span-3 mx-5 md:mx-0">
                         <h2 className=' text-2xl'>{name}</h2>
+                        <p>ID: {_id}</p>
                         <p className="mt-2 text-sm text-gray-600">
                             {description}
                         </p>

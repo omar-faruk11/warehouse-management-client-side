@@ -10,20 +10,19 @@ const AddItem = () => {
     const { register, handleSubmit, watch,reset, formState: { errors } } = useForm();
     const onSubmit = (formdata,e) => {
         console.log(formdata);
+        toast.success('Item Added!', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress:''
+            });
+            reset();
         (async () => {
             const { data } = await axios.post('https://powerful-woodland-06362.herokuapp.com/product', (formdata));
-            if (data) {
-                toast.success('Item Added!', {
-                    position: "top-right",
-                    autoClose: 3000,
-                    hideProgressBar: true,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress:''
-                    });
-            reset()
-            }
+            
         })();
     };
     return (
@@ -34,8 +33,8 @@ const AddItem = () => {
                 <input className="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded my-2 " placeholder='Product Name'{...register("name", { required: true })} />
                 <textarea className="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded my-2" placeholder='Product Description' {...register("description", { required: true })} />
                 <input className="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded my-2" placeholder='Supplier Name'{...register("supplier", { required: true })} />
-                <input className="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded my-2" type='number' placeholder='Price'{...register("price", { required: true })} />
-                <input className="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded my-2" type='number' placeholder='Quantity'{...register("quantity", { required: true })} />
+                <input className="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded my-2" min={1} type='number' placeholder='Price'{...register("price", { required: true })} />
+                <input className="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded my-2" min={1} type='number' placeholder='Quantity'{...register("quantity", { required: true })} />
                 <input className="w-full p-3 mt-1 text-sm border-2 border-gray-200 rounded my-2" placeholder='Picture url'{...register("picture", { required: true })} />
                 <input className=" hidden" defaultValue={user.email}  {...register("email", { required: true })} />
 

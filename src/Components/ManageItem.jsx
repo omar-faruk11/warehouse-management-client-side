@@ -39,7 +39,7 @@ const ManageItem = ({ product, products, setProducts }) => {
                     <img className='w-10 h-10 rounded-full' src={picture} alt="" />
                 </th>
                 <td className="md:px-6 py-4">
-                    {name}
+                    {name.slice(0,25)}
                 </td>
                 <td className="md:px-6 py-4">
                     {supplier}

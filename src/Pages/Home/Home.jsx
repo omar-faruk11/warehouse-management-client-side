@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Category from '../../Components/Category';
 import Loading from '../../Components/Loading';
 import Prodcut from '../../Components/Prodcut';
 import Footer from '../../Sheard/Footer';
@@ -7,6 +8,7 @@ const axios = require('axios');
 
 const Home = () => {
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [webLoading, setWebLoading] = useState(true);
   const navigate = useNavigate()
 
@@ -16,11 +18,16 @@ const Home = () => {
       setProducts(data);
       console.log(data);
       setWebLoading(false);
+    })();
+    (async () => {
+      const { data } = await axios.get('https://powerful-woodland-06362.herokuapp.com/categorys');
+      setCategories(data);
+      console.log(data);
     })()
   }, []);
-  if(webLoading){
-    return <Loading/>
-  }
+  if (webLoading) {
+    return <Loading />
+  };
 
   return (
     <>
@@ -28,18 +35,18 @@ const Home = () => {
         <div className="relative bg-black">
           <img
             className="absolute inset-0 object-[75%] sm:object-[25%] object-cover w-full h-full opacity-25 sm:opacity-100 "
-            src=" https://www.kindpng.com/picc/m/539-5393718_responsive-web-design-mobile-tab-and-pc-png.png"
+            src="http://enthavende.com/wp-content/uploads/2020/05/electronics.jpg"
             alt=''
           />
 
           <div className="hidden sm:block sm:inset-0 sm:absolute sm:bg-gradient-to-r sm:from-black sm:to-transparent"></div>
 
           <div className="relative max-w-screen-xl px-4 py-32 mx-auto lg:h-screen lg:items-center lg:flex">
-            <div className="max-w-xl text-center sm:text-left ml-14">
+            <div className="max-w-xl text-center sm:text-left md:ml-14">
               <h1 className="text-3xl font-extrabold sm:text-5xl text-white uppercase">
-              electronics 
-                <strong className="font-extrabold text-rose-600 sm:block uppercase ">
-                 warehouse
+                electronics
+                <strong className="font-extrabold text-rose-500 sm:block uppercase ">
+                  warehouse
                 </strong>
               </h1>
 
@@ -56,10 +63,19 @@ const Home = () => {
             </div>
           </div>
         </div>
-
-
+        {/* categories section */}
         <div>
-          <div className=' uppercase flex justify-center text-3xl my-5 '>inventory items</div>
+          <div className=' uppercase flex justify-center text-3xl my-8 '>categories</div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-9 mx-2 md:mx-14">
+            {
+              categories.slice(0, 4).map(category => <Category key={category._id} category={category}></Category>)
+            }
+
+          </div>
+        </div>
+        {/* inventory items  */}
+        <div>
+          <div className=' uppercase flex justify-center text-3xl my-8 '>inventory items</div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-9 md:mx-14">
             {
               products.slice(0, 6).map(product => <Prodcut key={product._id} product={product}></Prodcut>)
@@ -79,9 +95,12 @@ const Home = () => {
 
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
 
 export default Home;
+
+/* 
+ */
