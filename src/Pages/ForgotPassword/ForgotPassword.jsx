@@ -23,7 +23,7 @@ const ForgotPassword = () => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-            })
+            });
             setTimeout(() => {
                 navigate('/login')
               }, 7000);

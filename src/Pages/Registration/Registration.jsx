@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import SingInWithPopUp from '../../Components/SingInWithPopUp';
 import auth from '../../firebase.config';
 
@@ -17,24 +18,32 @@ const Registration = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, updeterror] = useUpdateProfile(auth);
-
+    
     const handleCreateUserWithEailPass = async (event) => {
         event.preventDefault()
         const email = event.target.email.value;
-        const name = event.target.name.value;
+        const displayName = event.target.name.value;
         const password = event.target.password.value;
         const confirmPassword = event.target.confirmPassword.value;
         if (password === confirmPassword) {
             await createUserWithEmailAndPassword(email, password);
-            updateProfile(name);
+            updateProfile({displayName});
+            toast.success('Send Email verification', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             const { data } = await axios.post('https://powerful-woodland-06362.herokuapp.com/login', { email });
             if (data) {
-                localStorage.setItem('accessToken', data)
-                
+                localStorage.setItem('accessToken', data);
             }
         }
         else {
-            setNotmatch('Password not match')
+            setNotmatch('Password not Match')
         }
 
     };
@@ -112,13 +121,13 @@ const Registration = () => {
                         </div>
                     </div>
                     {
-                        notmatch ? notmatch : ''
+                        notmatch ? <p className=' text-red-500'>{notmatch}</p> : ''
                     }
                     {
                         error ? <p>{error.message}</p> : ''
                     }
 
-                    <button type="submit" className="block w-full px-5 py-3 text-sm font-medium text-white bg-rose-500 rounded-lg">
+                    <button type="submit" className="block w-full px-5 py-3 text-sm font-medium text-white  bg-rose-500 active:bg-rose-400 rounded-lg">
                         Register
                     </button>
 
