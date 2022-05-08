@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Category from '../../Components/Category';
 import Loading from '../../Components/Loading';
 import Prodcut from '../../Components/Prodcut';
+import Topsale from '../../Components/Topsale';
 import Footer from '../../Sheard/Footer';
 const axios = require('axios');
 
@@ -29,6 +30,10 @@ const Home = () => {
     return <Loading />
   };
 
+  const topSalesProduct = [...products].sort(()=>0.5 - Math.random());
+  const topSales = topSalesProduct.slice(0,3);
+console.log(topSales);
+  
   return (
     <>
       <div>
@@ -73,10 +78,19 @@ const Home = () => {
 
           </div>
         </div>
+        {/* Top sale  */}
+        <div className=' bg-gray-200 p-2 md:p-6 mt-8 '>
+        <div className=' uppercase flex justify-center text-3xl mb-8 '>Top sales</div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5  md:mx-14 ">
+            {
+              topSales?.map(topSale => <Topsale key={topSale._id} topSale={topSale}/>)
+            }
+          </div>
+        </div>
         {/* inventory items  */}
         <div>
           <div className=' uppercase flex justify-center text-3xl my-8 '>inventory items</div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-9 md:mx-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-9 md:mx-14 ">
             {
               products.slice(0, 6).map(product => <Prodcut key={product._id} product={product}></Prodcut>)
             }
